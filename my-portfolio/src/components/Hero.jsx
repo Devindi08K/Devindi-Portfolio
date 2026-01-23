@@ -1,5 +1,6 @@
 import { useEffect } from 'react'
 import { animate, stagger } from 'animejs'
+import LetterGlitch from './LetterGlitch'
 
 const Hero = () => {
   useEffect(() => {
@@ -55,25 +56,26 @@ const Hero = () => {
 
   return (
     <section id="home" className="relative min-h-screen flex items-center justify-center px-6 py-20 overflow-hidden bg-dark-900">
-      {/* Background Image with Overlay */}
+      {/* Letter Glitch Background */}
       <div className="absolute inset-0">
-        <img 
-          src="https://images.unsplash.com/photo-1517694712202-14dd9538aa97?w=1920&h=1080&fit=crop" 
-          alt="Background"
-          className="w-full h-full object-cover opacity-10"
+        <LetterGlitch
+          glitchColors={['#0ea5e9', '#38bdf8', '#7dd3fc']}
+          glitchSpeed={30}
+          smooth={true}
+          outerVignette={true}
+          centerVignette={false}
         />
-        <div className="absolute inset-0 bg-gradient-to-br from-dark-900/95 via-dark-900/90 to-primary-900/80"></div>
       </div>
       
-      {/* Grid pattern overlay */}
-      <div className="absolute inset-0 bg-[linear-gradient(to_right,#4f4f4f0a_1px,transparent_1px),linear-gradient(to_bottom,#4f4f4f0a_1px,transparent_1px)] bg-[size:4rem_4rem]"></div>
+      {/* Additional gradient overlay for better text readability */}
+      <div className="absolute inset-0 bg-gradient-to-b from-dark-900/50 via-dark-900/30 to-dark-900/70"></div>
       
       <div className="container mx-auto text-center relative z-10 max-w-5xl">
         <div className="hero-tagline text-xs md:text-sm tracking-[0.3em] text-gray-400 mb-8 opacity-0 uppercase">
           Full Stack Developer
         </div>
         
-        <h1 className="hero-heading text-5xl md:text-7xl lg:text-8xl font-bold mb-8 opacity-0 leading-tight">
+        <h1 className="hero-heading text-4xl md:text-6xl lg:text-7xl font-bold mb-8 opacity-0 leading-tight">
           <span className="block mb-2">CODE FOR</span>
           <span className="block bg-gradient-to-r from-primary-400 via-blue-500 to-purple-600 bg-clip-text text-transparent">
             INNOVATION
@@ -81,8 +83,8 @@ const Hero = () => {
         </h1>
         
         <p className="hero-description text-base md:text-lg text-gray-400 max-w-2xl mx-auto mb-12 opacity-0 leading-relaxed">
-          Building scalable, high-performance web applications from concept to deployment. 
-          Proven experience developing enterprise-level systems at SLT, with expertise in full stack development and production-ready solutions.
+          4th Year Software Engineering Student at Sri Lanka Institute of Information Technology (SLIIT). 
+          Building scalable, high-performance web applications with proven experience developing enterprise-level systems at SLT.
         </p>
         
         <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-12">

@@ -1,5 +1,6 @@
 import { useEffect, useRef } from 'react'
 import { animate, stagger } from 'animejs'
+import Particles from './Particles'
 
 const Skills = () => {
   const skillsRef = useRef(null)
@@ -9,7 +10,6 @@ const Skills = () => {
       (entries) => {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
-            // Animate section label
             animate('.skills-label', {
               translateY: [20, 0],
               opacity: [0, 1],
@@ -17,7 +17,6 @@ const Skills = () => {
               ease: 'out(3)'
             })
             
-            // Animate heading
             animate('.skills-heading', {
               translateY: [30, 0],
               opacity: [0, 1],
@@ -26,7 +25,6 @@ const Skills = () => {
               ease: 'out(3)'
             })
             
-            // Animate description
             animate('.skills-description', {
               translateY: [20, 0],
               opacity: [0, 1],
@@ -35,7 +33,6 @@ const Skills = () => {
               ease: 'out(3)'
             })
             
-            // Animate process cards
             animate('.process-card', {
               translateY: [50, 0],
               opacity: [0, 1],
@@ -44,7 +41,6 @@ const Skills = () => {
               easing: 'out(3)'
             })
             
-            // Animate tech badges
             animate('.tech-badge', {
               scale: [0.8, 1],
               opacity: [0, 1],
@@ -71,22 +67,22 @@ const Skills = () => {
     {
       number: "01",
       title: "IDEA",
-      description: "Understanding requirements and planning the architecture. Breaking down complex problems into manageable components."
+      description: "Understanding requirements and planning the architecture."
     },
     {
       number: "02",
       title: "DESIGN",
-      description: "Creating user-friendly interfaces and designing database schemas. Focusing on UX and scalability."
+      description: "Creating user-friendly interfaces and database schemas."
     },
     {
       number: "03",
       title: "DEVELOP",
-      description: "Writing clean, maintainable code following best practices. Building both frontend and backend components."
+      description: "Writing clean, maintainable code following best practices."
     },
     {
       number: "04",
       title: "DEPLOY",
-      description: "Testing, debugging, and deploying applications. Ensuring everything works smoothly in production."
+      description: "Testing, debugging, and deploying to production."
     }
   ]
 
@@ -98,9 +94,24 @@ const Skills = () => {
   }
 
   return (
-    <section ref={skillsRef} id="skills" className="min-h-screen px-6 py-32 bg-dark-800 relative">
+    <section ref={skillsRef} id="skills" className="min-h-screen px-6 py-32 bg-dark-800 relative overflow-hidden">
+      {/* Particles Background */}
+      <div className="absolute inset-0">
+        <Particles
+          particleColors={["#ffffff"]}
+          particleCount={200}
+          particleSpread={10}
+          speed={0.1}
+          particleBaseSize={100}
+          moveParticlesOnHover
+          alphaParticles={false}
+          disableRotation={false}
+          pixelRatio={1}
+        />
+      </div>
+
       {/* Background gradient */}
-      <div className="absolute inset-0 bg-gradient-to-b from-dark-900 via-dark-800 to-dark-900 opacity-50"></div>
+      <div className="absolute inset-0 bg-gradient-to-b from-dark-900 via-dark-800 to-dark-900 opacity-70"></div>
       
       <div className="container mx-auto relative z-10">
         {/* Section Label */}
@@ -109,58 +120,59 @@ const Skills = () => {
         </div>
         
         {/* Heading */}
-        <h2 className="skills-heading text-4xl md:text-6xl font-bold text-center mb-6 opacity-0">
+        <h2 className="skills-heading text-4xl md:text-5xl font-bold text-center mb-4 opacity-0">
           FROM IDEA TO LAUNCH
         </h2>
         
         {/* Description */}
-        <p className="skills-description text-center text-gray-400 max-w-3xl mx-auto mb-20 opacity-0 text-base md:text-lg">
-          MY APPROACH TO BUILDING WEB APPLICATIONS WITH FOCUS ON QUALITY, 
-          PERFORMANCE, AND USER EXPERIENCE
-        </p>
+        <div className="max-w-3xl mx-auto mb-16">
+          <div className="skills-description text-center text-gray-400 opacity-0">
+            <p className="text-base md:text-lg leading-relaxed">
+              As a <span className="text-white font-semibold">4th Year Software Engineering Student at SLIIT</span>, I focus on building 
+              scalable web applications with quality, performance, and user experience at the core. 
+              My approach combines academic knowledge with hands-on professional experience from developing 
+              enterprise-level systems.
+            </p>
+          </div>
+        </div>
         
-        {/* Process Steps */}
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 max-w-7xl mx-auto mb-20">
+        {/* Process Steps - Compact Grid */}
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-4 max-w-6xl mx-auto mb-16">
           {process.map((step, index) => (
             <div
               key={index}
-              className="process-card bg-dark-700 border border-gray-800 rounded-2xl p-8 hover:border-primary-500/50 transition-all duration-300 opacity-0"
+              className="process-card bg-dark-700/50 backdrop-blur-sm border border-gray-800 rounded-xl p-6 hover:border-primary-500/50 transition-all duration-300 opacity-0"
             >
-              {/* Number */}
-              <div className="text-5xl font-bold text-primary-500/20 mb-4">
+              <div className="text-3xl font-bold text-primary-500/20 mb-3">
                 {step.number}
               </div>
-              
-              {/* Title */}
-              <h3 className="text-xl font-bold mb-4 text-white">
+              <h3 className="text-base font-bold mb-2 text-white">
                 {step.title}
               </h3>
-              
-              {/* Description */}
-              <p className="text-sm text-gray-400 leading-relaxed">
+              <p className="text-xs text-gray-400 leading-relaxed">
                 {step.description}
               </p>
             </div>
           ))}
         </div>
         
-        {/* Technologies Section */}
-        <div className="max-w-5xl mx-auto">
-          <h3 className="text-2xl md:text-3xl font-bold text-center mb-12 text-white">
-            TECHNOLOGIES & TOOLS
+        {/* Technologies Section - Smaller */}
+        <div className="max-w-4xl mx-auto">
+          <h3 className="text-xl md:text-2xl font-bold text-center mb-8 text-white">
+            TECH STACK
           </h3>
           
-          <div className="space-y-8">
+          <div className="space-y-6">
             {Object.entries(technologies).map(([category, techs], index) => (
-              <div key={index} className="border-b border-gray-800 pb-8 last:border-0">
-                <h4 className="text-sm text-gray-500 tracking-wider uppercase mb-4">
+              <div key={index} className="border-b border-gray-800 pb-6 last:border-0">
+                <h4 className="text-xs text-gray-500 tracking-wider uppercase mb-3">
                   {category}
                 </h4>
-                <div className="flex flex-wrap gap-3">
+                <div className="flex flex-wrap gap-2">
                   {techs.map((tech, i) => (
                     <span
                       key={i}
-                      className="tech-badge px-4 py-2 bg-dark-700 border border-gray-700 rounded-lg text-sm text-gray-300 hover:border-primary-500/50 hover:text-white transition-all opacity-0"
+                      className="tech-badge px-3 py-1.5 bg-dark-700/50 backdrop-blur-sm border border-gray-700 rounded-lg text-xs text-gray-300 hover:border-primary-500/50 hover:text-white transition-all opacity-0"
                     >
                       {tech}
                     </span>
@@ -171,14 +183,14 @@ const Skills = () => {
           </div>
           
           {/* Call to Action */}
-          <div className="mt-16 text-center">
-            <p className="text-gray-400 mb-6 text-base max-w-2xl mx-auto">
-              Proficient across the full development stack with hands-on experience in multiple frameworks and technologies. 
+          <div className="mt-12 text-center">
+            <p className="text-gray-400 mb-6 text-sm max-w-2xl mx-auto">
+              Proficient across the full development stack with hands-on experience in multiple frameworks. 
               Always learning and adapting to deliver the best solutions.
             </p>
             <a
               href="mailto:Devindi08@outlook.com"
-              className="inline-block px-8 py-4 bg-white text-black rounded-lg font-semibold transition-all hover:bg-gray-200 uppercase text-sm tracking-wider"
+              className="inline-block px-6 py-3 bg-white text-black rounded-lg font-semibold transition-all hover:bg-gray-200 uppercase text-xs tracking-wider"
             >
               Get In Touch
             </a>

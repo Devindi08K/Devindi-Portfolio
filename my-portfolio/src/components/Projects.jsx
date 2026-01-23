@@ -172,7 +172,7 @@ const Projects = () => {
           {projects.map((project, index) => (
             <div
               key={index}
-              className="project-card group bg-dark-800 border border-gray-800 rounded-2xl overflow-hidden hover:border-primary-500/50 transition-all duration-300 opacity-0"
+              className="project-card group relative bg-dark-800 border border-gray-800 rounded-2xl overflow-hidden hover:border-primary-500/50 transition-all duration-500 hover:shadow-2xl hover:shadow-primary-500/20 hover:-translate-y-2 opacity-0 before:absolute before:inset-0 before:bg-gradient-to-br before:from-primary-500/0 before:via-primary-500/0 before:to-primary-500/0 hover:before:from-primary-500/5 hover:before:via-transparent hover:before:to-purple-500/5 before:transition-all before:duration-500 before:pointer-events-none"
             >
               {/* Project Image */}
               <div className="relative h-48 overflow-hidden bg-dark-700">

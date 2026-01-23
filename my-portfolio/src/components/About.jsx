@@ -1,5 +1,6 @@
 import { useEffect, useRef } from 'react'
 import { animate, stagger } from 'animejs'
+import Waves from './Waves'
 
 const About = () => {
   const aboutRef = useRef(null)
@@ -98,7 +99,20 @@ const About = () => {
   ]
 
   return (
-    <section ref={aboutRef} id="about" className="min-h-screen px-6 py-32 bg-dark-800 relative">
+    <section ref={aboutRef} id="about" className="min-h-screen px-6 py-32 bg-dark-800 relative overflow-hidden">
+      {/* Waves Background */}
+      <div className="absolute inset-0 opacity-30">
+        <Waves
+          lineColor="#0ea5e9"
+          backgroundColor="transparent"
+          waveSpeedX={0.0125}
+          waveSpeedY={0.005}
+          waveAmpX={32}
+          waveAmpY={16}
+          className="w-full h-full"
+        />
+      </div>
+      
       {/* Background gradient */}
       <div className="absolute inset-0 bg-gradient-to-b from-dark-900 via-dark-800 to-dark-900 opacity-50"></div>
       
